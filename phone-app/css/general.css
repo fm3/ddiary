@@ -1,0 +1,123 @@
+* {
+	font-family: "Fira Sans";
+	-moz-user-select: none
+}
+
+body, svg, div {
+	margin: 0;
+	padding: 0;
+	width:100%;
+	overflow:hidden;
+}
+
+button {
+	padding: 1em;
+	font-size: 15pt;
+}
+
+#screenConsole {
+	font-size: 7pt;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: rgba(255,255,255,0.6);
+	padding: 1em 2em;
+	box-shadow: 0 0 2mm rgba(0,0,0,0.3);
+	word-wrap:break-word;
+	font-weight: 300;
+}
+
+#screenConsole.empty {
+	display:none;
+}
+
+.fullScreen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #f1f1ed;
+}
+
+.numberInput {
+	margin: 1mm;
+	text-align: right;
+	display: inline-block;
+	width: 1.5em;
+	background: #e6e6e6;
+	font-size: 20pt;
+	padding: 3mm 6mm 2mm 6mm;
+	-moz-font-feature-settings: "tnum" 1;
+	border: 1px solid #c9c9c6;
+}
+
+.icon {
+	vertical-align: top;
+	display: inline-block;
+	margin: 4mm 2mm 0 0;
+}
+
+h2 {
+	font-weight: normal;
+	text-align: center;
+	margin-bottom: 0.1em;
+	font-size: 10pt;
+}
+
+#dayNavigation {
+	position: absolute;
+	bottom: 3vh;
+	width: 100%;
+	text-align: center;
+	font-size: 12pt;
+}
+
+#dayNavigation span {
+	margin: 2mm;
+	min-width: 13em;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#dayNavigation a {
+	width: 60px;
+	height: 62px;
+	line-height: 0;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: inline-block;
+	vertical-align: middle;
+	opacity: 0.5;
+}
+
+#dayNavigation a:active {
+	opacity: 1;
+}
+
+#dayNavigation a.prevDayButton {
+	background-image: url('../img/steepArrowLeft.svg');
+}
+#dayNavigation a.nextDayButton {
+	background-image: url('../img/steepArrowRight.svg');
+}
+#dayNavigation a.nextDayButton[disabled=true] {
+	opacity: 0.15
+}
+
+.factorSettingsButton {
+	position: absolute;
+	right: 3vh;
+	bottom: 3vh;
+}
+
+.factorWidget {
+	display: inline-block;
+	width: 6em;
+	margin: 4em 0.5em;
+}
+
+.factorLabel {
+	display: block;
+	text-align: center;
+}

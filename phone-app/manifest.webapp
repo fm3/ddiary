@@ -1,0 +1,16 @@
+{
+  "name": "DDiary",
+  "launch_path": "/index.html",
+  "type": "privileged",
+  "developer": {
+    "name": "Florian Meinel",
+    "url": "http://www.florianmeinel.de"
+  },
+  "icons": {
+    "128": "icon/icon.png"
+  },
+	"orientation": "landscape",
+  "permissions": {
+    "device-storage:sdcard":{ "access": "readwrite" }
+  }
+}

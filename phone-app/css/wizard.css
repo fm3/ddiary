@@ -1,0 +1,131 @@
+.timeWidget {
+	position: absolute;
+	bottom: 1em;
+	left: 1em;
+}
+
+.timeWidget .checkboxGroup {
+	font-size: 12pt;
+	width: 15mm;
+	margin-left: 2mm;
+	margin-right: 0;
+	vertical-align: top;
+}
+
+.timeWidget .numberInput {
+	width: 0.8em;
+}
+
+.timeWidget .timeSeparator {
+	font-size: 20pt;
+	display: inline-block;
+	padding: 3mm 0;
+	vertical-align: top;
+}
+
+.timeWidget .timeDiffLabel {
+	display: block;
+	width: 14em;
+	margin-top: -0.5em;
+	text-align: right;
+}
+
+.foodInputWidget {
+	padding: 0.5em 0.5em 0.5em 0;
+	display: inline-block;
+	width: 45%;
+	color: #dc6b00;
+	text-align: center;
+	vertical-align: top;
+}
+
+.insulinInputWidget {
+	padding: 0.5em;
+	display: inline-block;
+	width: 42%;
+	color: #2a9274;
+	text-align: center;
+	vertical-align: top;
+}
+
+.fingerStickInputWidget {
+	padding: 0.5em 0.5em 0.5em 2em;
+	display: inline-block;
+	width: 42%;
+	color: #d00000;
+	text-align: center;
+	vertical-align: top;
+}
+
+.noteInputWidget {
+	padding: 0.5em;
+	display: inline-block;
+	width: 42%;
+	text-align: center;
+	vertical-align: top;	
+}
+
+.noteInputWidget input {
+	margin: 1mm;
+	text-align: left;
+	display: inline-block;
+	width: 3.5em;
+	font-size: 20pt;
+	padding: 3mm 6mm 2mm 6mm;
+}
+
+.okButton {
+	position: absolute;
+	bottom: 1em;
+	right: 1em;
+}
+
+.checkboxGroup {
+	display: inline-block;
+	width: 22mm;
+	height: 11mm;
+	font-size: 25pt;
+	margin: 4mm 0;
+}
+
+.checkboxGroup label {
+	height: 11mm;
+	padding-top: 0.5mm;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.checkboxGroup input {
+	margin: 1mm;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.wizard .pageButton {
+	position: absolute;
+	top: 20vh;
+	height: 30vh;
+	width: 3em;
+	opacity: 0.1;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.wizard .pageButton:active {
+	opacity: 0.4;
+}
+
+.wizard .pageButton.right {
+	right: 0;
+	background-image: url('../img/arrowRight.svg');
+}
+
+.wizard .pageButton.left {
+	left: 0;
+	background-image: url('../img/arrowLeft.svg');
+}
+
+.checkboxGroup .smaller {
+	margin-top: 2mm;
+	font-size: 0.6em;
+}

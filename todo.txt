@@ -1,0 +1,54 @@
+• pdf report from data: stats about average bgs, food, insulin, injections, time above/below target
+• graph: display time-action profile for entered insulin?
+• graph: show KE-factors used?
+• graph: fingersticks: show red circle at according y
+• make guesses about the future?
+• python: back up log entries from phone
+• refactor js: separate wizard widgets
+• properly support different screen sizes
+
+
+✓ draw logarithmic value graph
+✓ display log entries on correct time
+✓ double click opens wizard
+✓ drag number input
+✓ input flags +≈↑L
+✓ display flags
+✓ go to previous days, display day
+✓ a vertical „now“ line
+✓ draw coordinate system
+✓ VBS-script to automate libre software CSV data export
+✓ on save success, clear updatedDays
+✓ time widget: show how long ago
+✓ suggest insulin dose, define KE factors in settings
+✓ second wizard page to add fingersticks and notes
+✓ graph: display note log entries
+✓ update nowline when app gets focus
+✓ suggestion should belong to the left page
+✓ don’t show suggestion when value is 0
+✓ graph: display fingersticks
+✓ graph: draw log entries directly above graph (insulin) and below (food)
+✓ graph: prevent log entry textnode collisions
+✓ refactoring: split css file
+✓ sort log entries by date in json (fixed by generating ids in HHMMSSrrrr format)
+✓ add only true flags to log entry objects?
+✓ show gaps in graph if there are gaps in the bg data
+✓ wizard: checking »+« in carbs should also check fast-acting
+✓ python: find a non-popupping way of querying if the phone is connected
+✓ day navigation buttons custom css (so the inactive one doesn’t change size while pressed)
+✓ refactor: double quotes in all string literals
+✓ refactor: screenConsole init from js, separate js file
+✓ screenConsole automatic clear after 10s
+✓ refactor: check semicolon line endings
+✓ refactor: check for loops (forEach in arrays, hasOwnProperty-check in objects)
+✓ interaction to delete already saved log entries
+✓ support adding log entries to the previous day
+✓ why and when is the now line jumping around? after lockscreen: portrait mode → wrong x
+✓ python: handle big clock corrections as timezone changes
+✓ reload bgs when usb is disconnected (listen to battery chargingchange)
+✓ check name consistency, rename “event” to “logEntry”
+✓ python: create phone bg dir if it’s missing (first run)
+✓ VBS: csv export directory should be parameter passed from python
+✓ onFocus after night, switch to new day if current day was shown
+✓ refactor: days and util should be in closure (except $(id))
+✓ write readme

@@ -1,0 +1,76 @@
+#graphSVG {
+	height: 100vh;
+	display: block;
+}
+
+#graphSVG path.curve {
+	fill:none;
+	stroke-width: 0.3mm;
+	stroke: #000000;
+}
+
+#graphSVG path#bloodSugar {
+	stroke: #d00000;
+}
+
+#graphSVG .logEntry {
+	color: black;
+	font-size: 3.5vh;
+	text-anchor: middle;
+	line-height: 0.5em;
+}
+
+#graphSVG .logEntry.carbs {
+	fill: #dc6b00;
+}
+
+#graphSVG .fastActing {
+	font-size: 0.7em;
+}
+
+#graphSVG .logEntry.insulin {
+	fill: #2a9274;
+}
+
+#graphSVG .logEntry.fingerStick {
+	fill: #d00000;
+}
+
+#graphSVG path.bgGraph {
+	stroke-width: 0.4mm;
+	stroke: #D00000;
+	fill: none;
+}
+
+#graphSVG rect.graphFrame, #graphSVG line.nowLine, #graphSVG .coordinateSystemLine {
+	fill: none;
+	stroke-width: 0.15mm;
+	stroke: rgba(0,0,0,0.1);
+}
+
+#graphSVG line.nowLine {
+	stroke-width: 0.3mm;
+}
+
+#graphSVG rect.targetRange {
+	fill: #f4f4f4;
+}
+
+#graphSVG text.coordinateSystemLabel {
+	font-size: 3.3vh;
+	fill: #555;
+}
+
+#graphSVG text.coordinateSystemLabel.y {
+	text-anchor: end;
+}
+
+#graphSVG text.coordinateSystemLabel.x {
+	text-anchor: middle;
+}
+
+#graphSVG #selectionCircle {
+	fill: transparent;
+	stroke: black;
+	stroke-width: 0.2mm;
+}
