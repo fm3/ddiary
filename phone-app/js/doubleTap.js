@@ -35,7 +35,6 @@ var doubleTaps = (function() {
     };
     var event = new CustomEvent("doubletap", {"detail": eventDetail});
     element.dispatchEvent(event);
-    console.log(element, "dispatched doubletap");
   }
 
 }());

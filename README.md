@@ -1,6 +1,6 @@
 # DDiary
 
-Type-1-Diabetes management tool for Firefox OS. Keep track of your carbs, insulin and blood glucose values. Import bg data from a Libre sensor to see correlation in the graph.
+Type-1-Diabetes management tool for Firefox OS. Keep track of your carbs, insulin and blood glucose values. Import bg data from a Libre sensor to see correlations in the graph.
 
 <img src="pictures/screenshots/2016-04-13_today.png" width="500">
 

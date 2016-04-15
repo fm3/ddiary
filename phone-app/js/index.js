@@ -3,7 +3,6 @@
 window.onload = initialize;
 
 function initialize() {
-  console.log("hallo?");
   screenConsole.initialize();
   graph.initialize();
   dayNavigation.initialize();
