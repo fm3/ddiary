@@ -41,7 +41,7 @@ Type-1-Diabetes management tool for Firefox OS. Keep track of your carbs, insuli
 
 * Press the ... button below the graph to adjust bolus factors for four times of day
 
-<img src="pictures/screenshots/2016-04-13_bolus_factors.png" width="500">
+<img src="pictures/screenshots/2016-04-15_bolus_factors.png" width="500">
 
 * In the wizard, when you enter carbs, a bolus suggestion rounded to 0.5 IE is displayed, using a linearly interpolated bolus factor.
 

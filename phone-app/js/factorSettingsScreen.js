@@ -19,7 +19,7 @@ var factorSettingsScreen = (function() {
 
 
       var title = document.createElement("h2");
-      title.appendChild(document.createTextNode("Adjust bolus factors"));
+      title.appendChild(document.createTextNode("Adjust bolus factors – for 10g KH, suggest me…"));
       settingsScreen.appendChild(title);
 
       var keyHours = bolusCalculator.getKeyHours();
