@@ -12,16 +12,17 @@ import platform
 
 csvDir = "../user-data/bg-csv"
 jsonDir = "../user-data/bg-json"
+timezoneShiftFilePath = "../user-data/bg-timezones/timezones.json"
 bgDirOnPhone = "ddiary/bg"
 
 bgValues = {}
 options = 0
-timezoneOffset = 0
+timezoneShifts = {}
 
 def main():
     parseArguments()
-    setupTimezone()
     libreSoftwareExportCsv()
+    updateTimezoneShiftFile(options.inputFilename)
     readCsv(options.inputFilename)
     writeJsonDayFiles()
     copyJsonFilesToPhone()
@@ -38,10 +39,6 @@ def parseArguments():
                          help="path to phone sd card, default: F:/")
     options = parser.parse_args()
 
-def setupTimezone():
-    global timezoneOffset
-    timezoneOffset = options.initTimezoneOffset
-
 def libreSoftwareExportCsv():
     csvDirAbsolute = os.path.normpath(os.path.join(os.path.dirname(os.path.realpath(__file__)), csvDir))
     try:
@@ -49,22 +46,49 @@ def libreSoftwareExportCsv():
     except e:
         print("Warning: could not launch libre csv exporter")
 
+def updateTimezoneShiftFile(libreCsvFileName):
+    global timezoneShifts
+    if os.path.exists(timezoneShiftFilePath):
+        timezoneShiftFile = open(timezoneShiftFilePath, 'r')
+        timezoneShifts = json.loads(timezoneShiftFile.read())
+    libreCsvFile = open(libreCsvFileName, 'r')
+    for line in libreCsvFile:
+        line_split = line[:-1].split("\t")
+        if isDeviceClockAdjustment(line_split):
+            deltaMinutes = extractTimezoneShift(line_split)
+            if abs(deltaMinutes) > 20:
+                timezoneShifts[line_split[0]] = {'offsetChange': deltaMinutes, 'newTime': line_split[18]}
+    timezoneShiftFile = open(timezoneShiftFilePath, 'w')
+    timezoneShiftFile.write(json.dumps(timezoneShifts, indent=4, separators=(',', ': ')))
+
+def isDeviceClockAdjustment(line_split):
+    return len(line_split) > 2 and line_split[2] == '6'
+
+def extractTimezoneShift(line_split):
+    dateBefore = parseDateString(line_split[17])
+    dateAfter = parseDateString(line_split[18])
+    delta = dateAfter - dateBefore
+    deltaMinutes = delta.total_seconds() / 60
+    return roundTo(deltaMinutes, 30)
+
+def roundTo(x, base):
+    return int(base * round(float(x)/base))
+
 def readCsv(fileName):
     file = open(fileName, 'r')
     count = 0
     for line in file:
         line_split = line[:-1].split("\t")
         if isHistoricGlucoseEntry(line_split):
-            registerValue(line_split[1], line_split[3])
+            registerValue(line_split[0], line_split[1], line_split[3])
             count += 1
-        if isDeviceClockAdjustment(line_split):
-            adjustTimezoneIfNecessary(line_split)
     print("Read {} values from CSV {}".format(count, fileName))
 
 def isHistoricGlucoseEntry(line_split):
     return len(line_split) > 2 and line_split[2] == '0'
 
-def registerValue(timeStringLocal, valueString):
+def registerValue(id, timeStringLocal, valueString):
+    timezoneOffset = timezoneOffsetForId(id)
     bgValue = valueString.replace(',','.')
     bgTimeLocal = parseDateString(timeStringLocal)
     bgTimeUTC = bgTimeLocal + timedelta(minutes=timezoneOffset)
@@ -78,22 +102,12 @@ def registerValue(timeStringLocal, valueString):
         bgValues[day] = []
     bgValues[day].append(valueObject)
 
-def isDeviceClockAdjustment(line_split):
-    return len(line_split) > 2 and line_split[2] == '6'
-
-def adjustTimezoneIfNecessary(line_split):
-    global timezoneOffset
-    dateBefore = parseDateString(line_split[17])
-    dateAfter = parseDateString(line_split[18])
-    delta = dateAfter - dateBefore
-    deltaMinutes = delta.total_seconds() / 60
-    deltaMinutesRounded = roundTo(deltaMinutes, 30)
-    if abs(deltaMinutes) > 20:
-        print("timezone change from", timezoneOffset, "to", timezoneOffset - deltaMinutesRounded, "at", dateBefore)
-        timezoneOffset -= deltaMinutesRounded
-
-def roundTo(x, base):
-    return int(base * round(float(x)/base))
+def timezoneOffsetForId(id):
+    timezoneOffset = options.initTimezoneOffset
+    for timezoneShiftId in timezoneShifts:
+        if (int(timezoneShiftId) < int(id)):
+            timezoneOffset -= timezoneShifts[timezoneShiftId]['offsetChange']
+    return timezoneOffset
 
 def parseDateString(dateString):
     return datetime.strptime(dateString, "%Y.%m.%d %H:%M") #2016.02.28 21:40

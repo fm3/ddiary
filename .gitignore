@@ -1,5 +1,6 @@
 user-data/bg-csv/*.csv
 user-data/bg-json/*.json
+user-data/bg-timezones/*.json
 user-data/logEntries/*.json
 user-data/reports/*.pdf
 user-data/reports/*.svg
